@@ -1,0 +1,2 @@
+·相对于Unsafe类只有在rt.jar包下的类才可以通过Unsafe.getUnsafe()方法直接获取到Unsafe类的实例，其他包下想要获取Unsafe类的实例只能通过
+反射的形式获取。

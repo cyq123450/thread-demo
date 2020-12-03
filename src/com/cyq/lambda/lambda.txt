@@ -1,0 +1,11 @@
+1.Lambda表达式的语法
+    基本语法:
+    (parameters) -> expression
+    或
+    (parameters) ->{ statements; }
+2.lambda表达式语法：
+    (1) () -> 5 : 不需要参数，返回值为5;
+    (2) x -> 2 * x : 接收一个参数(数字类型)，返回其2倍;
+    (3) (x, y) -> x - y : 接收两个参数(数字)，返回它们的差值;
+    (4) (int x, int y) -> x + y : 接收两个int型数字，返回它们的和
+    (5) (String s) -> System.out.print(s) : 接收一个String对象，并在控制台上打印它

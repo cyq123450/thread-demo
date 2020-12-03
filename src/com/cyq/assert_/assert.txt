@@ -1,0 +1,16 @@
+Java2在1.4中新增了一个关键字：assert。在程序开发过程中使用它创建一个断言(assertion)。，它的语法形式有如下所示的两种形式：
+    1、assert condition;
+        这里condition是一个必须为真(true)的表达式。如果表达式的结果为true，那么断言为真，并且无任何行动如果表达式为false，则断
+    言失败，则会抛出一个AssertionError对象。这个AssertionError继承于Error对象，而Error继承于Throwable，Error是和Exception
+    并列的一个错误对象，通常用于表达系统级运行错误。
+    2、asser condition:expr;
+        这里condition是和上面一样的，这个冒号后跟的是一个表达式，通常用于断言失败后的提示信息，说白了，它是一个传到AssertionError
+    构造函数的值，如果断言失败，该值被转化为它对应的字符串，并显示出来。
+
+Java的assertion的开启也和C语言不太一样，在C语言中，assertion的开启是在编译时候决定的。当我们使用debug方式编译程序时候，assertion
+被开启，而使用release方式编译时候，assertion自动被关闭。  而Java的assertion却是在运行的时候进行决定的。其实，这两种方式是各有优缺点。
+如果采用编译时决定方式，开发人员将处理两种类型的目标码，debug版本和release版本，这加大了文档管理的难度，但是提高了代码的运行效率。Java
+采用运行时决定的方式，这样所有的assertion信息将置于目标代码 中，同一目标代码可以选择不同方式运行，增强目标代码的灵活性，但是它将牺牲因为
+assertion而引起一部分性能损失。说直白一点就是：assert关键字需要在运行时候显式开启才能生效，否则你的断言就没有任何意义。如果需要观察断言
+的运行情况，就需要打开系统类的assertion功能 ，我们可使用-esa参数打开，使用dsa参数关闭。-esa和-dsa的全名为-enablesystemassertions和
+-disenablesystemassertions，全名和缩写名有同样的功能。
