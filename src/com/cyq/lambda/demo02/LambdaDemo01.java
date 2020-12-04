@@ -1,7 +1,6 @@
 package com.cyq.lambda.demo02;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -58,11 +57,17 @@ public class LambdaDemo01 {
                 .collect(Collectors.toList());      // 把结果集返回成一个集合
         collect1.forEach(p -> System.out.println(p));
 
+
+        peos = new Person[]{new Person(1, "Jack"),
+                new Person(5, "king"),
+                new Person(2, "Bob"),
+                new Person(9, "Tom"),
+                new Person(4, "Tim")};
         // 5.max使用
         System.out.println("6.");
         List<Person> list6 = Arrays.asList(peos);
         Person person = list6.stream()
-                .max((p, p1) -> (p.getId().compareTo(6)))
+                .max((p, p1) -> (p.getId().compareTo(p1.getId())))
                 .get();
         System.out.println(person);
 
@@ -70,10 +75,49 @@ public class LambdaDemo01 {
         System.out.println("7.");
         List<Person> list7 = Arrays.asList(peos);
         Person person1 = list7.stream()
-                .min((p, p1) -> (p.getId()))
+                .min((p, p1) -> (p.getId().compareTo(p1.getId())))
                 .get();
         System.out.println(person1);
 
+        // 8.将结果集转换为String、Set、TreeSet
+        System.out.println("8.");
+        List<Person> list8 = Arrays.asList(peos);
+        String nameStr = list8.stream()
+                .map(Person::getName)
+                .collect(Collectors.joining(";"));      // 结果存放在String中
+        System.out.println("nameStr:" + nameStr);
+
+        Set<String> nameSet = list8.stream()
+                .map(Person::getName)
+                .collect(Collectors.toSet());               // 结果存放在Set中
+        Arrays.asList(nameSet).stream()
+                .forEach(System.out::print);
+        System.out.println();
+
+        TreeSet<String> nameTreeSet = list8.stream()
+                .map(Person::getName)
+                .collect(Collectors.toCollection(TreeSet::new));    // 结果存放在ThreeSet中
+        Arrays.asList(nameTreeSet).stream()
+                .forEach(System.out::print);
+        System.out.println();
+
+        // 9.Streams 还可以是并行的(parallel)
+        System.out.println("9.");
+        int sum = Arrays.asList(peos).parallelStream()
+                .mapToInt(p -> p.getId())
+                .sum();
+        System.out.println("sum:" + sum);
+
+        // 10.可以使用summaryStatistics方法获得stream 中元素的各种汇总数据
+        System.out.println("10.");
+        IntSummaryStatistics intSummaryStatistics = Arrays.asList(peos).stream()
+                .mapToInt(p -> p.getId())
+                .summaryStatistics();
+        System.out.println("intSummaryStatistics -> getMax:" + intSummaryStatistics.getMax());
+        System.out.println("intSummaryStatistics -> getMin:" + intSummaryStatistics.getMin());
+        System.out.println("intSummaryStatistics -> getAvg:" + intSummaryStatistics.getAverage());
+        System.out.println("intSummaryStatistics -> getCut:" + intSummaryStatistics.getCount());
+        System.out.println("intSummaryStatistics -> getSum:" + intSummaryStatistics.getSum());
 
     }
 
