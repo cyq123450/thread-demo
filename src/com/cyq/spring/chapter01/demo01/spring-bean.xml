@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 通过构造器创建实例 index:构造方法参数的索引位置 value:设置的值 -->
+    <bean id="user1" class="com.cyq.spring.chapter01.demo01.User">
+        <constructor-arg index="0" value="1001"/>
+        <constructor-arg index="1" value="尚云"/>
+        <constructor-arg index="2" value="北京"/>
+    </bean>
+
+    <!-- 通过setter方法创建实例 name:setter方法名称 value:设置值-->
+    <bean id="user2" class="com.cyq.spring.chapter01.demo01.User">
+        <property name="id" value="1002"/>
+        <property name="name" value="spring1"/>
+        <property name="address" value="北京"/>
+    </bean>
+</beans>
