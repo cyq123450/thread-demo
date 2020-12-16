@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/util
+            http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 集合属性注入的简单方式 -->
+    <bean id="complexCollection1" class="com.cyq.spring.chapter01.demo02.ComplexCollection">
+        <property name="str" value="字符串"></property>
+        <property name="list">  <!-- List集合 -->
+            <list>
+                <value>List1</value>
+                <value>List2</value>
+                <value>List3</value>
+            </list>
+        </property>
+        <property name="map">   <!-- Map集合 -->
+            <map>
+                <entry key="map1" value="val1"></entry>
+                <entry key="map2" value="val2"></entry>
+                <entry key="map3" value="val3"></entry>
+            </map>
+        </property>
+        <property name="array"> <!-- 数组集合 -->
+            <array>
+                <value>array1</value>
+                <value>array2</value>
+                <value>array3</value>
+            </array>
+        </property>
+        <property name="set">   <!-- Set集合 -->
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+                <value>set3</value>
+            </set>
+        </property>
+        <property name="properties">    <!-- Properties集合 -->
+            <props>
+                <prop key="pro1">val1</prop>
+                <prop key="pro2">val2</prop>
+                <prop key="pro3">val3</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="user1" class="com.cyq.spring.chapter01.demo02.User">
+        <property name="id" value="101"></property>
+        <property name="username" value="张三"></property>
+        <property name="note" value="这是一个用户"></property>
+    </bean>
+    <bean id="user2" class="com.cyq.spring.chapter01.demo02.User">
+        <property name="id" value="102"></property>
+        <property name="username" value="李四"></property>
+        <property name="note" value="这是一个用户"></property>
+    </bean>
+    <bean id="role1" class="com.cyq.spring.chapter01.demo02.Role">
+        <property name="id" value="10001"></property>
+        <property name="roleName" value="role1"></property>
+    </bean>
+    <bean id="role2" class="com.cyq.spring.chapter01.demo02.Role">
+        <property name="id" value="10002"></property>
+        <property name="roleName" value="role2"></property>
+    </bean>
+    <!-- 集合属性注入的复杂方式 -->
+    <bean id="userRoleVO1" class="com.cyq.spring.chapter01.demo02.UserRoleVO">
+        <property name="id" value="1002"></property>
+        <property name="users">
+            <list>
+                <ref bean="user1"></ref>
+                <ref bean="user2"></ref>
+            </list>
+        </property>
+        <property name="roles">
+            <set>
+                <ref bean="role1"></ref>
+                <ref bean="role2"></ref>
+            </set>
+        </property>
+        <property name="userRoleMap">
+            <map>
+                <entry key-ref="user1" value-ref="role1"></entry>
+                <entry key-ref="user2" value-ref="role2"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <!-- 通过命名空间的方式配置bean -->
+    <!--
+        通过命令空间注入对象的属性值(需要引入对应的命名空间和XSD)：
+        1.通过c标签注入
+            c:_0  代表第一个属性值
+            c:属性名称=属性值
+        2.通过p标签注入
+            p:属性名称=属性值
+        3.
+    -->
+    <bean id="user3" class="com.cyq.spring.chapter01.demo02.User" c:id="1003" c:username="user3" c:note="这是一个用户"/>
+    <bean id="user4" class="com.cyq.spring.chapter01.demo02.User" p:id="1004" p:username="user4" p:note="这是一个用户"/>
+    <bean id="role3" class="com.cyq.spring.chapter01.demo02.Role" c:_0="103" c:_1="role3"/>
+    <bean id="role4" class="com.cyq.spring.chapter01.demo02.Role" c:id="104" c:roleName="role4"/>
+
+    <util:list id="list">
+        <ref bean="user3"/>
+        <ref bean="user4"/>
+    </util:list>
+    <util:map id="map">
+        <entry key-ref="user3" value-ref="role3"></entry>
+        <entry key-ref="user4" value-ref="role4"></entry>
+    </util:map>
+    <util:set id="set">
+        <ref bean="role3"/>
+        <ref bean="role4"/>
+    </util:set>
+    <bean id="userRoleVO2" class="com.cyq.spring.chapter01.demo02.UserRoleVO"
+          c:id="10002" c:roles-ref="set" c:users-ref="list" c:userRoleMap-ref="map"/>
+
+</beans>

@@ -16,4 +16,18 @@
         <property name="name" value="spring1"/>
         <property name="address" value="北京"/>
     </bean>
+
+    <!-- XML配置文件使用bean标签创建实例如果没有指定id值，默认的id值为全限定名#{number} -->
+    <bean class="com.cyq.spring.chapter01.demo01.User">
+        <property name="id" value="1002"/>
+        <property name="name" value="Spring2"/>
+        <property name="address" value="辽宁"/>
+    </bean>
+
+    <!-- 使用ref可以引入对应的实例 -->
+    <bean id="school1" class="com.cyq.spring.chapter01.demo01.School">
+        <property name="name" value="清华大学"/>
+        <property name="user" ref="user1"/>
+    </bean>
+
 </beans>
