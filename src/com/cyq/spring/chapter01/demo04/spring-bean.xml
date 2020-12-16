@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+        在Spring的配置文件中可以在beans标签中通过profile属性设置对应的应用场景。
+        如果没有激活对应的场景，对应的实体类是不放到Spring IOC容器中的。
+    -->
+    <beans profile="dev">
+        <bean id="user1" class="com.cyq.spring.chapter01.demo04.User">
+            <property name="userName" value="xml中的开发环境"/>
+        </bean>
+    </beans>
+
+    <beans profile="test">
+        <bean id="user2" class="com.cyq.spring.chapter01.demo04.User">
+            <property name="userName" value="测试环境"/>
+        </bean>
+    </beans>
+
+</beans>
