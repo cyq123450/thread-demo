@@ -3,6 +3,7 @@ package com.cyq.spring.chapter01.demo03.conf;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.test.context.ActiveProfiles;
 
 /**
  * @Import 注解中可以导入多个配置类
