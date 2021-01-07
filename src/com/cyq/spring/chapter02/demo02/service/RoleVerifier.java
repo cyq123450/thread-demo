@@ -2,8 +2,8 @@ package com.cyq.spring.chapter02.demo02.service;
 
 import com.cyq.spring.chapter02.demo02.entity.Role;
 
-public interface RoleService {
+public interface RoleVerifier {
 
-    void printRole(Role role);
+    boolean verify(Role role);
 
 }
