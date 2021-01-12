@@ -1,8 +1,7 @@
-package com.cyq.lambda.demo03;
+package com.cyq.lambda_java8.demo03;
 
 import org.junit.Test;
 
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -18,6 +17,20 @@ import java.util.function.Supplier;
  *          R apply(T t);
  *      Predicate<T> : 断言型接口
  *          boolean test(T t);
+ *
+ *  扩展函数式接口：
+ *      BiFunction<T, U, R>                     R apply(T t, U u);
+ *      UnaryOperator<T>(Function子接口)        T apply(T t);
+ *      BinaryOperator<T>(BiFunction子接口)     T apply(T t1, T t2);
+ *      BiConsumer<T, U>                        void accept(T t, U u);
+ *
+ *      ToIntFunction<T>
+ *      ToLongFunction<T>
+ *      ToDoubleFunction<T>
+ *
+ *      IntFunction<R>
+ *      LongFunction<R>
+ *      DoubleFunction<R>
  */
 public class LambdaDemoTest01 {
 

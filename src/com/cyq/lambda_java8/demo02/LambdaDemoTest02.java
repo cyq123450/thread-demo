@@ -1,4 +1,4 @@
-package com.cyq.lambda.demo02;
+package com.cyq.lambda_java8.demo02;
 
 import org.junit.Test;
 

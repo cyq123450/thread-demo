@@ -1,4 +1,4 @@
-package com.cyq.lambda.demo01;
+package com.cyq.lambda_java8.demo01;
 
 /**
  * 策略设计模式接口

@@ -1,4 +1,4 @@
-package com.cyq.lambda.demo01;
+package com.cyq.lambda_java8.demo01;
 
 /**
  * 通过年龄过滤数据实现类(过滤年龄大于50的人员)

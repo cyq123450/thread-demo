@@ -1,4 +1,4 @@
-package com.cyq.lambda.demo01;
+package com.cyq.lambda_java8.demo01;
 
 /**
  * 通过工资过滤实现类(过滤工资大于10000的人员)

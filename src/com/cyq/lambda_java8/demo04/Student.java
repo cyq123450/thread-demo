@@ -1,23 +1,30 @@
-package com.cyq.lambda.demo01;
+package com.cyq.lambda_java8.demo04;
 
 /**
- * Person实体类
+ * Student实体类
  */
-public class Person {
+public class Student {
 
     private Integer id;
     private String userName;
     private Integer age;
-    private Double salary;
 
-    public Person() {
+    public Student() {
     }
 
-    public Person(Integer id, String userName, Integer age, Double salary) {
+    public Student(String userName) {
+        this.userName = userName;
+    }
+
+    public Student(String userName, Integer age) {
+        this.userName = userName;
+        this.age = age;
+    }
+
+    public Student(Integer id, String userName, Integer age) {
         this.id = id;
         this.userName = userName;
         this.age = age;
-        this.salary = salary;
     }
 
     public Integer getId() {
@@ -44,21 +51,12 @@ public class Person {
         this.age = age;
     }
 
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
-
     @Override
     public String toString() {
-        return "Person{" +
+        return "Student{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", age=" + age +
-                ", salary=" + salary +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.cyq.lambda.demo01;
+package com.cyq.lambda_java8.demo01;
 
 import java.util.Comparator;
 
