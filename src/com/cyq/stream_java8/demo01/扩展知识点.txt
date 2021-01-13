@@ -1,1 +1,5 @@
-Arrays.asList()不能使用add和remove方法的原因
+Arrays.asList()不能使用add和remove方法的原因:
+    Arrays.asList()方法返回的ArrayList对象只是Arrays类中的内部类，并不是我们常用的ArrayList类，该内部类并没有重写add()和remove()方法。
+    所以对Arrays.asList()返回的List对象进行add()和remove()操作会抛出UnsupportedOperationException，这是因为Arrays中内部类ArrayList并没有
+    重写add()和remove()方法，当调用add()和remove()方法时调用的其实是该内部类的父类方法，该父类的add()和remove()方法会抛出UnsupportedOperationException
+    异常。
