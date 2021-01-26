@@ -12,7 +12,7 @@ public interface MyInterface {
         System.out.println("这是默认的方法实现...");
     }
 
-    public static void say() {
+    static void say() {
         System.out.println("这是静态修饰的方法实现...");
     }
 
