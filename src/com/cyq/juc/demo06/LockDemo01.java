@@ -29,10 +29,10 @@ class MyThread1 implements Runnable {
     @Override
     public void run() {
         while (ticketNum > 1) {
-            lock.lock();
             if (ticketNum <= 0) {
                 break;
             }
+            lock.lock();
             try {
                 Thread.sleep(100);
                 System.out.println(Thread.currentThread().getName() + "---售卖第" + ticketNum-- + "张车票");
